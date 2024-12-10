@@ -140,7 +140,7 @@ sync_repository() {
     if [ "$SYNC_ALL" = "true" ]; then
         combined_branches=$(git branch -r | grep 'svn/' | sed 's|svn/||')
     else
-        combined_branches=$(echo -e "$git_branch_to_sync\n$svn_branch_to_sync" | uniq)
+        combined_branches=$(echo -e "$git_branch_to_sync\n$svn_branch_to_sync" | sort | uniq)
     fi
 
     for branch in $combined_branches; do
